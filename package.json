@@ -6,13 +6,27 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
+    "eslint": "eslint --ext .js,.vue src --fix",
+    "precommit": "pretty-quick --staged",
+    "release": "yarn build && git add dist/* && standard-version -a && npm pu",
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.7.5",
+    "@vue/babel-helper-vue-jsx-merge-props": "^1.0.0",
     "core-js": "^3.4.3",
+    "element-ui": "^2.13.0",
     "vue": "^2.6.10"
   },
   "devDependencies": {
+    "@commitlint/cli": "^8.2.0",
+    "@commitlint/config-conventional": "^8.2.0",
+    "@types/jest": "^24.0.19",
+    "husky": "^3.1.0",
+    "lint-staged": "^9.5.0",
+    "prettier": "1.19.1",
+    "pretty-quick": "^2.0.1",
+    "standard-version": "^7.0.1",
     "@vue/cli-plugin-babel": "^4.1.0",
     "@vue/cli-plugin-eslint": "^4.1.0",
     "@vue/cli-plugin-unit-jest": "^4.1.0",
@@ -25,5 +39,23 @@
     "stylus": "^0.54.7",
     "stylus-loader": "^3.0.2",
     "vue-template-compiler": "^2.6.10"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ],
+    "rules": {}
+  },
+  "lint-staged": {
+    "*.{js,vue}": [
+      "eslint --fix",
+      "git add"
+    ]
   }
 }

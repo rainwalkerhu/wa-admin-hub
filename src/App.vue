@@ -1,27 +1,71 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <data-form
+      v-model="form"
+      ref="form"
+      :data="formOpt"
+      :form-props="{labelWidth: labelWidth}"
+      :span="12"
+      :plugin="plugin"
+      @change="handleChange"
+    />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import DataForm from './components/data-form/index'
 
 export default {
-  name: 'app',
+  name: 'App',
   components: {
-    HelloWorld
+    DataForm
+  },
+  data () {
+    return {
+      plugin: {},
+      labelWidth: '130px',
+      form: {
+        text: 'hello'
+      },
+      formOpt: {
+        form: {
+          text: {
+            type: 'text',
+            label: '输入框',
+            value: '输入框'
+          },
+          checkbox: {
+            type: 'checkbox',
+            label: '多选',
+            value: [1],
+            inputProps: {},
+            groupProps: {},
+            onChange (instance, key, val) {
+              // console.log(instance, key, val)
+            },
+            options: [
+              {
+                name: 'option 1',
+                value: 1
+              },
+              {
+                name: 'option 2',
+                value: 2
+              }
+            ]
+          }
+        },
+        rules: {}
+      }
+    }
+  },
+  methods: {
+    reset () {
+      this.$refs.form.reset()
+    },
+    handleChange () {
+      // console.log(...arguments)
+    }
   }
 }
 </script>
-
-<style lang="stylus">
-#app
-  font-family 'Avenir', Helvetica, Arial, sans-serif
-  -webkit-font-smoothing antialiased
-  -moz-osx-font-smoothing grayscale
-  text-align center
-  color #2c3e50
-  margin-top 60px
-</style>
