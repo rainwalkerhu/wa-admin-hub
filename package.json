@@ -1,7 +1,10 @@
 {
-  "name": "wa-admin-hub2",
+  "name": "wa-admin-hub",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "docs": {
+    "title": "vue后台管理项目业务高频组件"
+  },
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",

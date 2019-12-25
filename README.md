@@ -1,4 +1,4 @@
-# wa-admin-hub2
+# wa-admin-hub
 
 ## Project setup
 ```
