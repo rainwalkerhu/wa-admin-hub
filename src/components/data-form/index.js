@@ -6,7 +6,7 @@ import {
   Input as ElInput
 } from 'element-ui'
 import plugins from './plugins'
-import './style/index.css'
+import './style/index.styl'
 
 export default {
   name: 'DataForm',
@@ -113,6 +113,7 @@ export default {
     },
     destoryItem (arr = [], rebuild = false) {
       const _this = this
+      arr = arr instanceof Array ? arr : [arr]
       arr.forEach((key) => {
         _this.formMap[key] = rebuild
       })

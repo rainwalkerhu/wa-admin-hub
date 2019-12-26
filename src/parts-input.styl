@@ -1,0 +1,65 @@
+
+.parts-input 
+  background-color: #fff
+  color: #525b69
+
+  .parts-input__inner 
+    position: relative
+    display: inline-block
+    max-width: 100%
+    color: #525b69
+    border-radius: 4px
+    border: 1px solid rgba(196,199,202,.6)
+    padding-right: 5px
+
+    &:focus-widthin 
+      outline: unset
+      border-color: #008cee
+      box-shandow: 0 0 0 2px rgba(0, 150, 238, .2)
+
+    .parts-input_some 
+      display: inline-flex
+      border-radius: 4px
+      height: 32px
+
+      input 
+        overflow-x: visible
+        text-align: center
+        border-radius: 4px
+        display: inline
+        border: 0
+        padding: 0
+        outline: none
+        font-size: inherit
+        color: #525b69
+        height: 32px
+        min-width: 30px
+        max-width: 100%
+
+    .parts-input__suffix 
+      position: absolute
+      right: 5px
+      top: 1px
+      height: 100%
+      color: #c3cad2
+      text-align: center
+      transition: all .3s
+
+      .parts-input__suffix-inner 
+        pointer-events: all
+
+        .parts-input__clear 
+          color: #c3cad2
+          font-size: 14px
+          line-height: 16px
+          transition: color .2s cubic-bezier(.645, .045, .355, 1)
+          cursor: pointer
+
+          &:hover 
+            color: #929ba5
+            
+.el-form-item.is-error 
+  .parts-input__inner,
+  .parts-input__inner:focus-within 
+    border-color: #e3614a
+    box-shadow: 0 0 0 2px rgba(227, 97, 74, .2)
